@@ -13,29 +13,24 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-    console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. It's a draw!`); 
-    } else if (playerSelection == 'rock' && computerSelection =='scissors') {
-        ++playerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
-    } else if (playerSelection == 'paper' && computerSelection =='rock') {
-        ++playerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
-    } else if (playerSelection == 'scissors' && computerSelection =='paper') {
-        ++playerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
-    } else if (playerSelection == 'rock' && computerSelection =='paper') {
-        ++computerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
-    } else if (playerSelection == 'paper' && computerSelection =='scissors') {
-        ++computerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
-    } else if (playerSelection == 'scissors' && computerSelection =='rock') {
-        ++computerWinCount;
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
+
+    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'paper' && computerSelection == 'rock') || 
+        (playerSelection == 'scissors' && computerSelection == 'paper')) {
+        //win
+        playerWinCount++;
+        console.log(`${playerSelection} versus ${computerSelection}. You win!`);
+
+    } else if (playerSelection == computerSelection) {
+        //tie
+        console.log(`${playerSelection} versus ${computerSelection}. It's a draw!`); 
+
     } else {
-        console.log(`Error, player threw: ${playerSelection}`);
+        //loss (if not a win or a tie, then it's a loss)
+        computerWinCount++;
+        console.log(`${playerSelection} versus ${computerSelection}. You lose!`); 
     }
+
     console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
 }
 
@@ -48,8 +43,8 @@ function game() {
         // console.log('computerSelection', computerSelection);
     }
     console.log(`You played 5 games! 
-    You won ${playerWinCount} times.
-    The computer won ${computerWinCount} times.`);
+    You won ${playerWinCount} time(s).
+    The computer won ${computerWinCount} time(s).`);
 }
 
 //add a way to use regular expressions to filter out invalid inputs such as numbers or symbols
@@ -59,4 +54,3 @@ let computerSelection;
 let computerWinCount = 0;
 let playerWinCount = 0;
 game();
-
