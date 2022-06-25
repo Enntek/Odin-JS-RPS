@@ -14,24 +14,49 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-    console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. It's a draw!`);
+    console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. It's a draw!`); 
     } else if (playerSelection == 'rock' && computerSelection =='scissors') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`);
+        ++playerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
     } else if (playerSelection == 'paper' && computerSelection =='rock') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`);
+        ++playerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
     } else if (playerSelection == 'scissors' && computerSelection =='paper') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`);
+        ++playerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You win!`); 
     } else if (playerSelection == 'rock' && computerSelection =='paper') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`);
+        ++computerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
     } else if (playerSelection == 'paper' && computerSelection =='scissors') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`);
+        ++computerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
     } else if (playerSelection == 'scissors' && computerSelection =='rock') {
-        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`);
+        ++computerWinCount;
+        console.log(`You threw ${playerSelection} and the computer threw ${computerSelection}. You lose!`); 
+    } else {
+        console.log(`Error, player threw: ${playerSelection}`);
     }
+    console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
 }
 
+function game() {
 
-const playerSelection = prompt(`Please type 'rock', 'paper', or 'scissors'.`);
-const computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt(`Please type 'rock', 'paper', or 'scissors'.`).toLowerCase();
+        computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        // console.log('computerSelection', computerSelection);
+    }
+    console.log(`You played 5 games! 
+    You won ${playerWinCount} times.
+    The computer won ${computerWinCount} times.`);
+}
+
+//add a way to use regular expressions to filter out invalid inputs such as numbers or symbols
+//check for valid inputs: 'rock' 'paper' 'scissors'
+let playerSelection; 
+let computerSelection; 
+let computerWinCount = 0;
+let playerWinCount = 0;
+game();
 
