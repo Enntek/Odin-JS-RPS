@@ -1,5 +1,60 @@
 'use strict';
 
+
+
+const container = document.querySelector('#container');
+
+// create the 3 'buttons', each button is 2 boxes inside of 1 box
+
+const rockBox = document.createElement('div');
+container.appendChild(rockBox);
+
+const rockTop = document.createElement('div');
+rockTop.classList.add('content');
+rockTop.textContent = 'R';
+rockBox.appendChild(rockTop);
+
+const rockBottom = document.createElement('div')
+rockBottom.classList.add('content');
+rockBottom.textContent = 'Rock';
+rockBox.appendChild(rockBottom);
+
+const paperBox = document.createElement('div');
+container.appendChild(paperBox);
+
+const paperTop = document.createElement('div');
+paperTop.classList.add('content');
+paperTop.textContent = 'P';
+paperBox.appendChild(paperTop);
+
+const paperBottom = document.createElement('div');
+paperBottom.classList.add('content');
+paperBottom.textContent = 'Paper';
+paperBox.appendChild(paperBottom);
+
+const scissorsBox = document.createElement('div');
+container.appendChild(scissorsBox)
+
+const scissorsTop = document.createElement('div');
+scissorsTop.classList.add('content');
+scissorsTop.textContent = 'S';
+scissorsBox.appendChild(scissorsTop);
+
+const scissorsBottom = document.createElement('div');
+scissorsBottom.classList.add('content');
+scissorsBottom.textContent = 'Scissors';
+scissorsBox.appendChild(scissorsBottom);
+
+
+
+
+
+
+
+
+
+
+
 // Select randomly: rock, paper, or scissors
 function computerPlay() {
     let rand = Math.random();
@@ -46,12 +101,11 @@ function game() {
     The computer won ${computerWinCount} time(s).`);
 }
 
-
 let playerSelection; 
 let computerSelection; 
 let computerWinCount = 0;
 let playerWinCount = 0;
-game();
+// game();
 
 // Add: learn regular expression and filter out incorrect inputs, allow 'rock',
 // 'paper', 'scissors' only 
