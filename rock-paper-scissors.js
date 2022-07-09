@@ -1,4 +1,11 @@
+// add: when min width is below x, stack boxes vertically
+// add transition (grow box)
+// add sound
+// add countdown of 3 seconds per game
+
 'use strict';
+document.body.style.backgroundImage = "url('white-bg.jpg')"
+document.body.style.backgroundSize = "100vw";
 
 // Select randomly: rock, paper, or scissors
 function computerPlay() {
@@ -33,20 +40,37 @@ function playRound(playerSelection, computerSelection) {
     }
     
     console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
-}
+    
 
-function game(choice) {
 
-    for (let i = 0; i < 5; i++) {
-        playerSelection = choice;
-        computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
+    textBox.textContent = `Player wins: ${playerWinCount} 
+    Computer wins: ${computerWinCount}`;
+
+    if (playerWinCount == 3) {
+        playerWinCount = 0;
+        computerWinCount = 0;
+        textBox.textContent = `Player wins. Play again?`;
+        
+    } else if (computerWinCount == 3) {
+        playerWinCount = 0;
+        computerWinCount = 0;
+        textBox.textContent = `Computer wins. Play again?`; 
     }
-
-    console.log(`You played 5 games! 
-    You won ${playerWinCount} time(s).
-    The computer won ${computerWinCount} time(s).`);
 }
+
+// function game(choice) {
+
+//     for (let i = 0; i < 5; i++) {
+//         playerSelection = choice;
+//         computerSelection = computerPlay();
+//         playRound(playerSelection, computerSelection);
+//     }
+
+//     console.log(`You played 5 games! 
+//     You won ${playerWinCount} time(s).
+//     The computer won ${computerWinCount} time(s).`);
+
+// }
 
 let playerSelection; 
 let computerSelection; 
@@ -58,9 +82,19 @@ let playerWinCount = 0;
 const container = document.querySelector('#container');
 container.setAttribute('class', 'container1')
 
+const textBox = document.createElement('div')
+textBox.setAttribute('id', 'textBox')
+textBox.classList.add('content');
+textBox.textContent = 'Select rock, paper or scissors to begin game:'
+container.appendChild(textBox);
+
+const buttonBox = document.createElement('div');
+buttonBox.setAttribute('id', 'buttonBox');
+container.appendChild(buttonBox);
+
 const rockBox = document.createElement('div');
 rockBox.setAttribute('class', 'rock')
-container.appendChild(rockBox);
+buttonBox.appendChild(rockBox);
 
 const rockTop = document.createElement('div');
 rockTop.classList.add('content');
@@ -74,7 +108,7 @@ rockBox.appendChild(rockBottom);
 
 const paperBox = document.createElement('div');
 paperBox.setAttribute('class', 'paper')
-container.appendChild(paperBox);
+buttonBox.appendChild(paperBox);
 
 const paperTop = document.createElement('div');
 paperTop.classList.add('content');
@@ -88,7 +122,7 @@ paperBox.appendChild(paperBottom);
 
 const scissorsBox = document.createElement('div');
 scissorsBox.setAttribute('class', 'scissors');
-container.appendChild(scissorsBox)
+buttonBox.appendChild(scissorsBox)
 
 const scissorsTop = document.createElement('div');
 scissorsTop.classList.add('content');
@@ -100,7 +134,7 @@ scissorsBottom.classList.add('content');
 scissorsBottom.textContent = 'Scissors';
 scissorsBox.appendChild(scissorsBottom);
 
-const nodeList = document.querySelectorAll('#container > div')
+const nodeList = document.querySelectorAll('#buttonBox > div')
 
 function logClick(e) {
     
@@ -117,6 +151,20 @@ function logClick(e) {
 }
 
 nodeList.forEach((child) => child.addEventListener('click', logClick))
+
+function logKey(e) {
+    if (e.code == 'KeyR') {
+        playRound('rock')
+    } else if (e.code == 'KeyP') {
+        playRound('paper')
+    } else if (e.code == 'KeyS') {
+        playRound('scissors')
+    }
+    // console.log(e.code);
+    // console.log(e.key);
+}
+
+window.addEventListener('keydown', logKey)
 
 // Add: learn regular expression and filter out incorrect inputs, allow 'rock',
 // 'paper', 'scissors' only 
