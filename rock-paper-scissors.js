@@ -162,21 +162,20 @@ function logClick(e) {
 
 nodeList.forEach((child) => child.addEventListener('click', logClick))
 
-// function logKey(e) {
-//     if (e.code == 'KeyR') {
-//         document.querySelector('#rockID').classList.add('playing')
-//         playRound('rock')
-//     } else if (e.code == 'KeyP') {
-//         document.querySelector('#paperID').classList.add('playing')
-//         playRound('paper')
-//     } else if (e.code == 'KeyS') {
-//         document.querySelector('#scissorsID').classList.add('playing')
-//         playRound('scissors')
-//     }
+function logKey(e) {
+    if (e.code == 'KeyR') {
+        // document.querySelector('#rockID').classList.add('playing')
+        playRound('rock')
+    } else if (e.code == 'KeyP') {
+        // document.querySelector('#paperID').classList.add('playing')
+        playRound('paper')
+    } else if (e.code == 'KeyS') {
+        // document.querySelector('#scissorsID').classList.add('playing')
+        playRound('scissors')
+    }
+}
 
-// }
-
-// window.addEventListener('keydown', logKey)
+window.addEventListener('keydown', logKey)
 
 // function removeTransition(e) {
 //     if (e.code == 'KeyR') {
