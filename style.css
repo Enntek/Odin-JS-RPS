@@ -1,5 +1,5 @@
 * {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 body {
@@ -59,12 +59,12 @@ div#container {
 }
 
 #scoreBox {
-  font: 36px Arial, sans-serif;
+  font: 30px Courier New, sans-serif;
 }
 /* #rock {
   border: 5px solid green;
 } */
 
 #textBox {
-  font: 36px Arial, sans-serif;
+  font: 42px Verdana, sans-serif;
 }
