@@ -30,21 +30,21 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection == 'scissors' && computerSelection == 'paper')) {
         
         playerWinCount++;
-        console.log(`${playerSelection} versus ${computerSelection}. You win!`);
+        textBox.textContent = `It's ${playerSelection} versus ${computerSelection}. You win!`;
     
     } else if (playerSelection == computerSelection) {
-        console.log(`${playerSelection} versus ${computerSelection}. It's a draw!`); 
+        textBox.textContent = `It's ${playerSelection} versus ${computerSelection}. It's a draw!`;
 
     } else {
         computerWinCount++;
-        console.log(`${playerSelection} versus ${computerSelection}. You lose!`); 
+        textBox.textContent = `It's ${playerSelection} versus ${computerSelection}. You lose!`;
     }
     
-    console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
+    // console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
     
 
 
-    textBox.textContent = `Player wins: ${playerWinCount} 
+    scoreBox.textContent = `Player wins: ${playerWinCount} 
     Computer wins: ${computerWinCount}`;
 
     if (playerWinCount == 5) {
@@ -83,11 +83,17 @@ let playerWinCount = 0;
 const container = document.querySelector('#container');
 container.setAttribute('class', 'container1')
 
-const textBox = document.createElement('div')
-textBox.setAttribute('id', 'textBox')
+const scoreBox = document.createElement('div')
+scoreBox.setAttribute('id', 'scoreBox')
+scoreBox.classList.add('content');
+scoreBox.textContent = 'Select rock, paper or scissors to begin game:'
+container.appendChild(scoreBox);
+
+const textBox = document.createElement('div');
+textBox.setAttribute('id', 'textBox');
 textBox.classList.add('content');
-textBox.textContent = 'Select rock, paper or scissors to begin game:'
-container.appendChild(textBox);
+textBox.textContent = "Click or press R, P, or S to begin."
+container.appendChild(textBox)
 
 const buttonBox = document.createElement('div');
 buttonBox.setAttribute('class', 'cbuttonBox');

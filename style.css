@@ -1,3 +1,7 @@
+* {
+  border: 1px solid black;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -54,9 +58,13 @@ div#container {
   /* border: 1px solid black; */
 }
 
-#textBox {
+#scoreBox {
   font: 36px Arial, sans-serif;
 }
 /* #rock {
   border: 5px solid green;
 } */
+
+#textBox {
+  font: 36px Arial, sans-serif;
+}
