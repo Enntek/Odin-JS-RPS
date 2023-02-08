@@ -40,10 +40,6 @@ function playRound(playerSelection, computerSelection) {
         textBox.textContent = `It's ${playerSelection} versus ${computerSelection}. You lose!`;
     }
     
-    // console.log(`Player wins: ${playerWinCount}, Computer wins: ${computerWinCount}`);
-    
-
-
     scoreBox.textContent = `Player wins: ${playerWinCount} 
     Computer wins: ${computerWinCount}`;
 
